@@ -1,0 +1,100 @@
+
+<div class="my-3">
+  <p class="font-bold text-green-500 text-center">Student List</p>
+
+  <button
+    class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+    <span
+      class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+      Add New Student
+    </span>
+  </button>
+  <form  [formGroup]="formAdd" (ngSubmit)="submit()">
+    <div class="mb-6">
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Student Name</label>
+      <input type="text" formControlName ="name"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+    </div>
+    <div class="mb-6">
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gender</label>
+      <input  formControlName="gender" id="default-radio-2" type="radio" value="Female"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+      <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
+      <input  formControlName="gender" id="default-radio-1 " type="radio" value="Male"
+        class="ml-3 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+      <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
+    </div>
+    <div class="mb-6">
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Subject</label>
+      <select id="countries"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option selected="">Choose a country</option>
+        <option value="US">United States</option>
+        <option value="CA">Canada</option>
+        <option value="FR">France</option>
+        <option value="DE">Germany</option>
+      </select>
+    </div>
+
+    <div class="flex items-center mb-4">
+      <input id="default-checkbox" type="checkbox" value=""
+        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+      <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Class
+        Leader</label>
+    </div>
+
+    <button type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      Submit
+    </button>
+  </form>
+</div>
+
+<div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="py-3 px-6">
+                 Student Name
+              </th>
+              <th scope="col" class="py-3 px-6">
+                 Gender
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Subject
+              <th scope="col" class="py-3 px-6">
+                  Role
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Action
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr  *ngFor="let student of students" class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+              <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {{student.name}}
+              </th>
+              <td class="py-4 px-6">
+                 {{student.gender}}
+              </td>
+              <td class="py-4 px-6">
+                  {{student.subject}}
+              </td>
+              <td class="py-4 px-6">
+                 {{student.is_leader}}
+              </td>
+              <td class="py-4 px-6">
+                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                  <a href="#" class="font-medium p-3 text-green-600 dark:text-blue-500 hover:underline">View</a>
+                  <a href="#" class="font-medium text-rose-600 dark:text-blue-500 hover:underline">Delete</a>
+              </td>
+          </tr>
+
+      </tbody>
+  </table>
+</div>
+
+
+<!-- Student Details -->
+<div class="p-5 border border-green-500 mt-7"></div>
