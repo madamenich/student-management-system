@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { StudentService } from 'src/app/shared/student.service';
 import { Student } from './../../model/student';
+import {ActivatedRoute, Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-student-add-form',
@@ -19,7 +20,7 @@ export class StudentAddFormComponent implements OnInit {
  })
 
  student!:Student
-  constructor(private fb :FormBuilder, private studentService:StudentService) { }
+  constructor(private fb :FormBuilder, private studentService:StudentService, private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -28,11 +29,13 @@ export class StudentAddFormComponent implements OnInit {
   }
 
   submit(){
-    this.student =<Student><unknown>this.formAdd.value;
+    // @ts-ignore
+    this.student =<Student>this.formAdd.value;
     this.student.id = Math.floor(Math.random() * 100)+1;
     console.log(this.student);
     this.studentService.insert(this.student).subscribe() ;
-    this.studentService.getAll().subscribe(x=>console.log(x))
+    // this.studentService.getAll().subscribe(x=>console.log(x))
+    this.route.navigate([''])
 
 
 

@@ -8,11 +8,13 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentAddFormComponent } from './components/student-add-form/student-add-form.component';
 import { StudentTableComponent } from './components/student-table/student-table.component';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
 @NgModule({
   declarations: [
     AppComponent,
   StudentTableComponent,
-  StudentAddFormComponent
+  StudentAddFormComponent,
+  StudentDetailsComponent
   ],
   imports: [
     BrowserModule,
