@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 
 import { Student } from 'src/app/model/student';
 import { StudentService } from 'src/app/shared/student.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'student-table',
@@ -18,7 +19,7 @@ export class StudentTableComponent implements OnInit {
     is_leader:[false,]
    })
    student!:Student
-
+  constructor(private studentService:StudentService, private fb:FormBuilder, private route:Router) { }
 
   submit(){
     this.student =<Student><unknown>this.formAdd.value;
@@ -31,8 +32,15 @@ export class StudentTableComponent implements OnInit {
 
   }
 
+  goToAdd(){
+    this.route.navigate(['/add'])
 
-  constructor(private studentService:StudentService, private fb:FormBuilder) { }
+  }
+
+
+
+
+
 
   ngOnInit() {
     this.getAllStudents()
